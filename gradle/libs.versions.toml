@@ -14,6 +14,9 @@ daggerHilt = "2.51.1"
 room = "2.5.2"
 mockito = "4.0.0"
 coroutines = "1.6.4"
+retrofit = "2.9.0"
+converterGson = "2.5.0"
+kotlinxSerializationJson = "1.6.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +44,11 @@ androidx-junit_test = { module = "junit:junit", version.ref = "junit"}
 androidx-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito"}
 androidx-mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito"}
 androidx-coroutines-test = { module = "orgorg.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines"}
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson"}
+kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

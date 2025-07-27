@@ -11,6 +11,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
+        val baseUrl: String by project
         applicationId = "com.example.mercadolibre"
         minSdk = 24
         targetSdk = 35
@@ -18,6 +19,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
     }
 
     buildTypes {
@@ -38,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -60,6 +63,11 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.kotlin)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation(libs.kotlin.serialization)
+    implementation(libs.kotlinx.serialization.json)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     testImplementation(libs.androidx.junit.test)
     testImplementation(libs.androidx.mockito.core)
