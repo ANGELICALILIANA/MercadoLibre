@@ -1,5 +1,8 @@
 package com.mercadolibre.ui.viewmodel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mercadolibre.data.model.ResponseCategoryItem
@@ -8,6 +11,7 @@ import com.mercadolibre.data.network.exception.ApiError
 import com.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
 import com.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
 import com.mercadolibre.domain.usecase.ServiceUseCaseResponse
+import com.mercadolibre.ui.sampleProducts
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,6 +39,19 @@ class SearchViewModel @Inject constructor(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: MutableStateFlow<String?>
         get() = _errorMessage
+
+    var isLoading by mutableStateOf(false)
+        private set
+
+    var searchQuery by mutableStateOf("")
+        private set
+
+    private val allProducts = sampleProducts
+
+    // Estado para los productos filtrados
+    var filteredProducts by mutableStateOf(allProducts)
+        private set
+
 
     /**
      * Ejecuta la búsqueda de una lista de categorías en segundo plano a partir de un término de consulta
@@ -90,6 +107,23 @@ class SearchViewModel @Inject constructor(
     fun clearResponseCategoryList() {
         _responseCategoryList.value = emptyList()
         _responseCategoryItem.value = null
+    }
+
+    private fun filterProducts() {
+        filteredProducts = if (searchQuery.isEmpty()) {
+            allProducts
+        } else {
+            allProducts.filter { product ->
+                product.title.contains(searchQuery, ignoreCase = true) ||
+                        product.description.contains(searchQuery, ignoreCase = true) ||
+                        product.category.contains(searchQuery, ignoreCase = true)
+            }
+        }
+    }
+
+    fun onSearchQueryChange(query: String) {
+        searchQuery = query
+        getSearchCategoryList(query)
     }
 
 }
