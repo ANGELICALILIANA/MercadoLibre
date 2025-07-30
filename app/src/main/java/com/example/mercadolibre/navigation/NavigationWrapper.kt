@@ -1,15 +1,15 @@
-package com.mercadolibre.navigation
+package com.example.mercadolibre.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.mercadolibre.ui.sampleProducts
-import com.mercadolibre.ui.screen.ProductDetailScreen
-import com.mercadolibre.ui.viewmodel.ProductViewModel
+import com.example.mercadolibre.ui.sampleProducts
 import com.mercadolibre.ui.screen.HomeScreen
-import com.mercadolibre.ui.viewmodel.SearchViewModel
+import com.mercadolibre.ui.screen.ProductDetailScreen
+import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 
 @Composable
 fun NavigationWrapper(
@@ -25,16 +25,15 @@ fun NavigationWrapper(
                 viewModel = viewModel,
                 onProductClick = { productId ->
                     navController.navigate("product/$productId")
+                    viewModel.getSearchItemCategory(productId)
                 }
             )
         }
 
-        composable("product/{productId}") { backStackEntry ->
-            val productId = backStackEntry.arguments?.getString("productId")
-            val product = sampleProducts.find { it.id == productId } ?: sampleProducts[0]
-
+        composable("product/{productId}") {
+            val product = viewModel.responseCategoryItem.collectAsState()
             ProductDetailScreen(
-                product = product,
+                product = product.value ?: sampleProducts[0],
                 onBack = { navController.popBackStack() }
             )
         }

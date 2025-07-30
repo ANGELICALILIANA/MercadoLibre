@@ -8,7 +8,7 @@ import com.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
 import com.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
 import com.mercadolibre.domain.repository.SearchCategoryItemRepository
 import com.mercadolibre.domain.repository.SearchCategoryListRepository
-import com.mercadolibre.ui.viewmodel.SearchViewModel
+import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -146,7 +146,7 @@ data class ChannelSettings(
 @Serializable
 data class ChannelSettingDetails(
     @SerialName("minimum_price")
-    val minimum_price: Int? = null,
+    val minimum_price: Double? = null,
     @SerialName("status")
     val status: String? = null,
     @SerialName("buying_modes")

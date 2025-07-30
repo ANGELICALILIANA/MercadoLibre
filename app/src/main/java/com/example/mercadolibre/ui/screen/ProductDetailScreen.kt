@@ -27,18 +27,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import com.example.mercadolibre.R
 import com.example.mercadolibre.ui.theme.LightGrayML
-import com.mercadolibre.ui.Product
-import com.mercadolibre.ui.viewmodel.ProductViewModel
+import com.example.mercadolibre.ui.Product
+import com.example.mercadolibre.ui.sampleProducts
 
 @Composable
 fun ProductDetailScreen(
     product: Product,
     onBack: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
@@ -74,14 +78,24 @@ fun ProductDetailScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             // Contenido del detalle
+            val defaultImage = painterResource(R.drawable.mercado_libre)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
-                    .background(Color.LightGray.copy(alpha = 0.3f)),
+                    .height(200.dp),
                 contentAlignment = Alignment.Center
             ) {
-                Text("Imagen del producto", color = Color.Gray)
+                AsyncImage(
+                    model = product.imageUrl,
+                    contentDescription = product.title,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp)
+                        .clip(MaterialTheme.shapes.medium),
+                    contentScale = ContentScale.Crop,
+                    error = defaultImage,
+                    placeholder = defaultImage
+                )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -124,4 +138,14 @@ fun ProductDetailScreen(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun ProductDetailScreenPreview() {
+    ProductDetailScreen(
+        product = sampleProducts[0],
+        onBack = {},
+        modifier = Modifier
+    )
 }

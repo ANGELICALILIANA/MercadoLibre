@@ -1,11 +1,11 @@
-package com.mercadolibre.ui.viewmodel
+package com.example.mercadolibre.ui.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mercadolibre.ui.sampleProducts
+import com.example.mercadolibre.ui.sampleProducts
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -29,10 +29,9 @@ class ProductViewModel @Inject constructor() : ViewModel() {
         private set
 
     init {
-        // Observamos cambios en el texto de búsqueda
         viewModelScope.launch {
             while (true) {
-                delay(300) // Pequeño delay para no sobrecargar
+                delay(300)
                 filterProducts()
             }
         }

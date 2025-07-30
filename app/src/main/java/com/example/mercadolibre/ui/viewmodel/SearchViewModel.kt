@@ -1,8 +1,10 @@
-package com.mercadolibre.ui.viewmodel
+package com.example.mercadolibre.ui.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mercadolibre.data.model.ResponseCategoryItem
@@ -11,10 +13,16 @@ import com.mercadolibre.data.network.exception.ApiError
 import com.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
 import com.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
 import com.mercadolibre.domain.usecase.ServiceUseCaseResponse
-import com.mercadolibre.ui.sampleProducts
+import com.example.mercadolibre.ui.Product
+import com.example.mercadolibre.ui.toProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,34 +32,33 @@ class SearchViewModel @Inject constructor(
     private val searchCategoryItemUseCaseImpl: SearchCategoryItemUseCaseImpl
 )  : ViewModel() {
 
-    private val _responseCategoryList = MutableStateFlow<List<ResponseCategoryList>>(emptyList())
-    val responseCategoryList: MutableStateFlow<List<ResponseCategoryList>>
-        get() = _responseCategoryList
+    private val _responseCategoryList = MutableStateFlow<List<Product>>(emptyList())
+    val responseCategoryList: StateFlow<List<Product>> = _responseCategoryList.asStateFlow()
 
-    private val _responseCategoryItem = MutableStateFlow<ResponseCategoryItem?>(null)
-    val responseCategoryItem: MutableStateFlow<ResponseCategoryItem?>
-        get() = _responseCategoryItem
+    private val _responseCategoryItem = MutableStateFlow<Product?>(null)
+    val responseCategoryItem: StateFlow<Product?> = _responseCategoryItem.asStateFlow()
 
-    private val _showOrHideLoader = MutableStateFlow<Boolean>(false)
-    val showOrHideLoader: MutableStateFlow<Boolean>
-        get() = _showOrHideLoader
+    private val _filteredProducts = MutableStateFlow<List<Product>>(emptyList())
+    val filteredProducts: StateFlow<List<Product>> = _filteredProducts.asStateFlow()
+
+    private val _showOrHideLoader = MutableStateFlow(false)
+    val showOrHideLoader: StateFlow<Boolean> = _showOrHideLoader.asStateFlow()
 
     private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: MutableStateFlow<String?>
-        get() = _errorMessage
-
-    var isLoading by mutableStateOf(false)
-        private set
+    val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
     var searchQuery by mutableStateOf("")
         private set
 
-    private val allProducts = sampleProducts
-
-    // Estado para los productos filtrados
-    var filteredProducts by mutableStateOf(allProducts)
-        private set
-
+    init {
+        snapshotFlow { searchQuery }
+            .debounce(300)
+            .onEach {
+                getSearchCategoryList(it)
+                filterProducts()
+            }
+            .launchIn(viewModelScope)
+    }
 
     /**
      * Ejecuta la búsqueda de una lista de categorías en segundo plano a partir de un término de consulta
@@ -65,12 +72,15 @@ class SearchViewModel @Inject constructor(
                 object : ServiceUseCaseResponse<List<ResponseCategoryList>> {
                     override fun onSuccess(result: List<ResponseCategoryList>) {
                         _showOrHideLoader.value = false
-                        _responseCategoryList.value = result
+                        _responseCategoryList.value = result.map { it.toProduct() }
+                        filterProducts()
+                        Log.d("http ${this::class.java.simpleName}", "_responseCategoryList: ${_responseCategoryList.value}")
                     }
 
                     override fun onError(apiError: ApiError?) {
                         _showOrHideLoader.value = false
                         _errorMessage.value = apiError?.getErrorMessage()
+                        Log.d("http ${this::class.java.simpleName}", "_errorMessage: ${_errorMessage.value}")
                     }
                 }
             )
@@ -82,14 +92,18 @@ class SearchViewModel @Inject constructor(
      * @param query ID de la categoría cuyos ítems se desean buscar
      */
     fun getSearchItemCategory(query: String) {
+        Log.d("http ${this::class.java.simpleName}", "getSearchItemCategory query: $query")
+
         viewModelScope.launch(Dispatchers.IO) {
             _showOrHideLoader.value = true
             searchCategoryItemUseCaseImpl.invoke(
                 query,
                 object : ServiceUseCaseResponse<ResponseCategoryItem> {
                     override fun onSuccess(result: ResponseCategoryItem) {
+                        Log.d("http ${this::class.java.simpleName}", "getSearchItemCategory result: $result")
                         _showOrHideLoader.value = false
-                        _responseCategoryItem.value = result
+                        _responseCategoryItem.value = result.toProduct()
+                        Log.d("http ${this::class.java.simpleName}", "getSearchItemCategory _responseCategoryItem: ${_responseCategoryItem.value}")
                     }
 
                     override fun onError(apiError: ApiError?) {
@@ -110,10 +124,11 @@ class SearchViewModel @Inject constructor(
     }
 
     private fun filterProducts() {
-        filteredProducts = if (searchQuery.isEmpty()) {
-            allProducts
+        _errorMessage.value = null
+        _filteredProducts.value = if (searchQuery.isEmpty()) {
+            _responseCategoryList.value
         } else {
-            allProducts.filter { product ->
+            _responseCategoryList.value.filter { product ->
                 product.title.contains(searchQuery, ignoreCase = true) ||
                         product.description.contains(searchQuery, ignoreCase = true) ||
                         product.category.contains(searchQuery, ignoreCase = true)
@@ -125,5 +140,4 @@ class SearchViewModel @Inject constructor(
         searchQuery = query
         getSearchCategoryList(query)
     }
-
 }

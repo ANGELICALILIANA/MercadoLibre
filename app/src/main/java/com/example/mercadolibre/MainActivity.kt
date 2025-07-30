@@ -36,9 +36,8 @@ import com.example.mercadolibre.ui.theme.LightGrayML
 import com.example.mercadolibre.ui.theme.MercadoLibreTheme
 import com.example.mercadolibre.ui.theme.TextDarkML
 import com.example.mercadolibre.ui.theme.YellowML
-import com.mercadolibre.navigation.NavigationWrapper
-import com.mercadolibre.ui.viewmodel.ProductViewModel
-import com.mercadolibre.ui.viewmodel.SearchViewModel
+import com.example.mercadolibre.navigation.NavigationWrapper
+import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
