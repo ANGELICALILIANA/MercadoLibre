@@ -1,7 +1,6 @@
 package com.example.mercadolibre.domain.repository.usecase
 
-import com.mercadolibre.data.network.exception.traceErrorException
-import com.mercadolibre.domain.usecase.ServiceUseCaseResponse
+import com.example.mercadolibre.data.network.exception.traceErrorException
 import java.util.concurrent.CancellationException
 
 abstract class ServiceUseCase<Type, in Params> where Type : Any {

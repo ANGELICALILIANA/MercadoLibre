@@ -1,4 +1,4 @@
-package com.mercadolibre.ui.screen
+package com.example.mercadolibre.ui.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

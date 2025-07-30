@@ -1,4 +1,4 @@
-package com.mercadolibre.data.usecaseImpl
+package com.example.mercadolibre.data.usecaseImpl
 
 import com.example.mercadolibre.data.model.ResponseCategoryItem
 import com.example.mercadolibre.domain.repository.SearchCategoryItemRepository

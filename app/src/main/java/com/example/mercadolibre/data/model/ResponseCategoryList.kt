@@ -3,7 +3,6 @@ package com.example.mercadolibre.data.model
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class ResponseCategoryList(
     @SerialName("domain_id")

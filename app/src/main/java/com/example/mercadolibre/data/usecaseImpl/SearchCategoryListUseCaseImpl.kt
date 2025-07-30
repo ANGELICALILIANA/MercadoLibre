@@ -1,7 +1,7 @@
-package com.mercadolibre.data.usecaseImpl
+package com.example.mercadolibre.data.usecaseImpl
 
 import com.example.mercadolibre.data.model.ResponseCategoryList
-import com.mercadolibre.domain.repository.SearchCategoryListRepository
+import com.example.mercadolibre.domain.repository.SearchCategoryListRepository
 import com.example.mercadolibre.domain.repository.usecase.ServiceUseCase
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.mercadolibre.domain.repository
+package com.example.mercadolibre.domain.repository
 
 import com.example.mercadolibre.data.model.ResponseCategoryList
 

@@ -2,7 +2,7 @@ package com.example.mercadolibre.data.repositoryImpl
 
 import com.example.mercadolibre.data.model.ResponseCategoryList
 import com.example.mercadolibre.data.network.ApiMercadoLibre
-import com.mercadolibre.domain.repository.SearchCategoryListRepository
+import com.example.mercadolibre.domain.repository.SearchCategoryListRepository
 import javax.inject.Inject
 
 class SearchCategoryListRepositoryImpl @Inject constructor(

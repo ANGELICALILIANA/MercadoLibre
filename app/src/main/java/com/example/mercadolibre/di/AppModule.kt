@@ -4,10 +4,10 @@ import com.example.mercadolibre.BuildConfig
 import com.example.mercadolibre.data.network.ApiMercadoLibre
 import com.example.mercadolibre.data.repositoryImpl.SearchCategoryItemRepositoryImpl
 import com.example.mercadolibre.data.repositoryImpl.SearchCategoryListRepositoryImpl
-import com.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
-import com.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
+import com.example.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
+import com.example.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
 import com.example.mercadolibre.domain.repository.SearchCategoryItemRepository
-import com.mercadolibre.domain.repository.SearchCategoryListRepository
+import com.example.mercadolibre.domain.repository.SearchCategoryListRepository
 import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 import dagger.Module
 import dagger.Provides

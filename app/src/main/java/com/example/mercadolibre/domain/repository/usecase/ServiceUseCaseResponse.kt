@@ -1,6 +1,6 @@
-package com.mercadolibre.domain.usecase
+package com.example.mercadolibre.domain.repository.usecase
 
-import com.mercadolibre.data.network.exception.ApiError
+import com.example.mercadolibre.data.network.exception.ApiError
 
 
 interface ServiceUseCaseResponse<Type> {

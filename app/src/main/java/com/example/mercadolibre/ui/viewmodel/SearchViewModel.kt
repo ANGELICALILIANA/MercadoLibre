@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mercadolibre.data.model.ResponseCategoryItem
 import com.example.mercadolibre.data.model.ResponseCategoryList
-import com.mercadolibre.data.network.exception.ApiError
-import com.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
-import com.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
-import com.mercadolibre.domain.usecase.ServiceUseCaseResponse
+import com.example.mercadolibre.data.network.exception.ApiError
+import com.example.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
+import com.example.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
+import com.example.mercadolibre.domain.repository.usecase.ServiceUseCaseResponse
 import com.example.mercadolibre.ui.Product
 import com.example.mercadolibre.ui.toProduct
 import dagger.hilt.android.lifecycle.HiltViewModel

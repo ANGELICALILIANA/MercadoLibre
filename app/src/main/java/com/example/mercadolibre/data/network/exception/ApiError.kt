@@ -1,4 +1,4 @@
-package com.mercadolibre.data.network.exception
+package com.example.mercadolibre.data.network.exception
 
 import com.example.mercadolibre.data.model.AppConstants as error
 

@@ -1,5 +1,4 @@
-package com.mercadolibre.data.network.exception
-
+package com.example.mercadolibre.data.network.exception
 
 import com.example.mercadolibre.data.model.AppConstants.UNKNOWN_ERROR_MESSAGE
 import retrofit2.HttpException
@@ -65,7 +64,7 @@ fun traceErrorException(throwable: Throwable?): ApiError {
         }
 
         is IOException -> {
-            var messageStr = throwable.message ?:""
+            val messageStr = throwable.message ?:""
 
             when {
                 (messageStr.contains("Unable to resolve host", true)) ->

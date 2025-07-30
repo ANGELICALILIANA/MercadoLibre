@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mercadolibre.ui.sampleProducts
-import com.mercadolibre.ui.screen.HomeScreen
+import com.example.mercadolibre.ui.screen.HomeScreen
 import com.example.mercadolibre.ui.screen.ProductDetailScreen
 import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 

@@ -1,6 +1,5 @@
 package com.example.mercadolibre.domain.repository.usecase
 
-import com.mercadolibre.domain.usecase.ServiceUseCaseResponse
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import io.mockk.*
