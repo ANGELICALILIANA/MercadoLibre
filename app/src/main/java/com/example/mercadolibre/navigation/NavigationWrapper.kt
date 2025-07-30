@@ -2,13 +2,14 @@ package com.example.mercadolibre.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mercadolibre.ui.sampleProducts
 import com.mercadolibre.ui.screen.HomeScreen
-import com.mercadolibre.ui.screen.ProductDetailScreen
+import com.example.mercadolibre.ui.screen.ProductDetailScreen
 import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 
 @Composable
@@ -32,6 +33,7 @@ fun NavigationWrapper(
 
         composable("product/{productId}") {
             val product = viewModel.responseCategoryItem.collectAsState()
+            LocalFocusManager.current.clearFocus()
             ProductDetailScreen(
                 product = product.value ?: sampleProducts[0],
                 onBack = { navController.popBackStack() }

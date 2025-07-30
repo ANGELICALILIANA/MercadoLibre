@@ -1,4 +1,4 @@
-package com.mercadolibre.ui.screen
+package com.example.mercadolibre.ui.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -37,6 +36,8 @@ import com.example.mercadolibre.R
 import com.example.mercadolibre.ui.theme.LightGrayML
 import com.example.mercadolibre.ui.Product
 import com.example.mercadolibre.ui.sampleProducts
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun ProductDetailScreen(
@@ -63,13 +64,13 @@ fun ProductDetailScreen(
                 .verticalScroll(rememberScrollState())
         ) {
             // Header con solo botón de regreso (sin barra de búsqueda)
-            Row(verticalAlignment = Alignment.CenterVertically,) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = onBack) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Regresar")
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.go_back))
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    "Detalle del producto",
+                    text = stringResource(R.string.product_detail),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.weight(1f)
                 )
@@ -125,7 +126,7 @@ fun ProductDetailScreen(
                     containerColor = MaterialTheme.colorScheme.primary
                 )
             ) {
-                Text("Comprar ahora", style = MaterialTheme.typography.titleMedium)
+                Text(text = stringResource(R.string.buy_now), style = MaterialTheme.typography.titleMedium)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -134,7 +135,7 @@ fun ProductDetailScreen(
                 onClick = { /* Acción de agregar al carrito */ },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Agregar al carrito", style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(R.string.add_to_cart), style = MaterialTheme.typography.titleMedium)
             }
         }
     }

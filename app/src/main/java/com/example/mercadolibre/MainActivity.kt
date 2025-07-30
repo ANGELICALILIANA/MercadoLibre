@@ -18,6 +18,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -28,15 +29,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.mercadolibre.navigation.NavigationWrapper
 import com.example.mercadolibre.ui.theme.LightGrayML
 import com.example.mercadolibre.ui.theme.MercadoLibreTheme
 import com.example.mercadolibre.ui.theme.TextDarkML
 import com.example.mercadolibre.ui.theme.YellowML
-import com.example.mercadolibre.navigation.NavigationWrapper
 import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,16 +52,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             MercadoLibreTheme {
                 val viewModel: SearchViewModel = hiltViewModel()
-                ScaffoldWithSearchBar(viewModel)
+                val navController = rememberNavController()
+                ScaffoldWithSearchBar(
+                    viewModel = viewModel,
+                    navController = navController
+                )
             }
         }
     }
 }
 
 @Composable
-fun ScaffoldWithSearchBar(viewModel: SearchViewModel) {
-    val navController = rememberNavController()
-
+fun ScaffoldWithSearchBar(viewModel: SearchViewModel, navController: NavHostController) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -78,7 +84,7 @@ fun ScaffoldWithSearchBar(viewModel: SearchViewModel) {
                     )
                     .padding(16.dp)
             ) {
-                SearchBarVisual(viewModel = viewModel)
+                SearchBarVisual(viewModel = viewModel, navController = navController)
             }
         }
     ) { paddingValues ->
@@ -94,8 +100,11 @@ fun ScaffoldWithSearchBar(viewModel: SearchViewModel) {
 @Composable
 fun SearchBarVisual(
     viewModel: SearchViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
+    val focusManager = LocalFocusManager.current
+
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
@@ -105,16 +114,23 @@ fun SearchBarVisual(
             onValueChange = viewModel::onSearchQueryChange,
             placeholder = {
                 Text(
-                    "Buscar productos...",
+                    stringResource(R.string.search_products),
                     color = TextDarkML
                 )
             },
             leadingIcon = {
-                Icon(
-                    Icons.Default.Search,
-                    contentDescription = "Buscar",
-                    tint = TextDarkML
-                )
+                IconButton(
+                    onClick = {
+                        focusManager.clearFocus()
+                        onSearchClick(viewModel.searchQuery, navController, viewModel)
+                    }
+                ) {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = stringResource(R.string.search),
+                        tint = TextDarkML
+                    )
+                }
             },
             singleLine = true,
             modifier = Modifier
@@ -139,3 +155,16 @@ fun SearchBarVisual(
         )
     }
 }
+
+fun onSearchClick(
+    query: String,
+    navController: NavHostController,
+    viewModel: SearchViewModel
+) {
+    viewModel.getSearchCategoryList(query)
+    navController.navigate("home") {
+        popUpTo("home") { inclusive = true }
+        launchSingleTop = true
+    }
+}
+

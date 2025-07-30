@@ -7,9 +7,17 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
 local.properties
+nexgosdk/build/
+mdbclientsdk/build/
+/app/development/*
+/app/production/*
+app/production/release
+app/certification
+mdbclientsdk/build/*
