@@ -6,7 +6,7 @@ import com.example.mercadolibre.data.repositoryImpl.SearchCategoryItemRepository
 import com.example.mercadolibre.data.repositoryImpl.SearchCategoryListRepositoryImpl
 import com.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
 import com.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
-import com.mercadolibre.domain.repository.SearchCategoryItemRepository
+import com.example.mercadolibre.domain.repository.SearchCategoryItemRepository
 import com.mercadolibre.domain.repository.SearchCategoryListRepository
 import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 import dagger.Module

@@ -1,9 +1,10 @@
-package com.mercadolibre.domain.usecase
+package com.example.mercadolibre.domain.repository.usecase
 
 import com.mercadolibre.data.network.exception.traceErrorException
+import com.mercadolibre.domain.usecase.ServiceUseCaseResponse
 import java.util.concurrent.CancellationException
 
-abstract class ServiceUseCase<Type, in Params>() where Type : Any {
+abstract class ServiceUseCase<Type, in Params> where Type : Any {
 
     abstract suspend fun run(request: Params? = null): Type
 

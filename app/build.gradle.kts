@@ -73,7 +73,6 @@ dependencies {
     testImplementation(libs.androidx.junit.test)
     testImplementation(libs.androidx.mockito.core)
     testImplementation(libs.androidx.mockito.kotlin)
-    testImplementation(libs.androidx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -83,4 +82,7 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     kapt(libs.dagger.hilt.android.compiler)
     kapt(libs.androidx.room.compiler)
+    testImplementation(kotlin("test"))
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

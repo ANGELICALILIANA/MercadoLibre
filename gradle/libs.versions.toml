@@ -5,12 +5,14 @@ coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinxCoroutinesTest = "1.9.0"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
 composeBom = "2024.09.00"
 androidxHiltNavigationCompose = "1.2.0"
 androidxLivedata = "1.2.1"
 daggerHilt = "2.51.1"
+mockk = "1.13.8"
 room = "2.5.2"
 mockito = "4.0.0"
 coroutines = "1.6.4"
@@ -45,7 +47,8 @@ androidx-room-kotlin = { module = "androidx.room:room-ktx", version.ref = "room"
 androidx-junit_test = { module = "junit:junit", version.ref = "junit"}
 androidx-mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito"}
 androidx-mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito"}
-androidx-coroutines-test = { module = "orgorg.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines"}
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson"}
 kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
