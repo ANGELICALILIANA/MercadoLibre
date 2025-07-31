@@ -46,9 +46,3 @@ jobs:
 
       - name: Verificar cobertura JaCoCo
         run: ./gradlew jacocoTestReport
-
-      - name: Subir cobertura JaCoCo
-        uses: actions/upload-artifact@v3
-        with:
-          name: jacoco-report
-          path: app/build/reports/jacoco/testDebugUnitTestCoverage/html/
