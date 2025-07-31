@@ -1,6 +1,6 @@
 <img src="app/src/main/res/drawable/rounded_mercado_libre.png" alt="Mercado Libre" width="24"/> MercadoLibre – Android App
 
-[![Build Status](https://github.com/angelicaLiliana/MercadoLibre/actions/workflows/android.yml/badge.svg)](https://github.com/angelicaLiliana/MercadoLibre/actions/workflows/android.yml)
+[![Build Status][![Android CI](https://github.com/ANGELICALILIANA/MercadoLibre/actions/workflows/android.yml/badge.svg)](https://github.com/ANGELICALILIANA/MercadoLibre/actions/workflows/android.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Este proyecto es una prueba técnica para MercadoLibre. Se desarrolló una aplicación Android en la que el usuario puede realizar búsquedas de productos por categoría y visualizar sus detalles.
@@ -39,7 +39,7 @@ Este proyecto es una prueba técnica para MercadoLibre. Se desarrolló una aplic
 
 _Visualiza los resultados completos en la pestaña [Actions](https://github.com/tu_usuario/tu_repo/actions) del repositorio._
 
-_Reporte Pruebas Unitarias 📂[Actions](app/build/reports/tests/testDebugUnitTest/) al abrir el archivo .html en el navegador_
+_Reporte Pruebas Unitarias 📂[Actions](app/build/reports/tests/testDebugUnitTest/index.html) al abrir el archivo .html en el navegador_
 
 ---
 
@@ -50,7 +50,6 @@ _Reporte Pruebas Unitarias 📂[Actions](app/build/reports/tests/testDebugUnitTe
 
 ## 📂 Estructura
 
-```text
 📦 app
 ┃
 ┣ 📂 data
