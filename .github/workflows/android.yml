@@ -37,6 +37,7 @@ jobs:
 
       - name: Ejecutar tests unitarios y mostrar resultados en consola
         run: ./gradlew testDebugUnitTest --info
+        continue-on-error: false
 
       - name: Subir reporte HTML de tests
         uses: actions/upload-artifact@v3
