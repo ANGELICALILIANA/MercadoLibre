@@ -1,6 +1,6 @@
-# 📱 MercadoLibre – Android App
+<img src="app/src/main/res/drawable/mercado_libre.png" alt="Mercado Libre" width="24"/> MercadoLibre – Android App
 
-[![Build Status](https://github.com/tu_usuario/tu_repo/actions/workflows/android.yml/badge.svg)](https://github.com/tu_usuario/tu_repo/actions/workflows/android.yml)
+[![Build Status](https://github.com/angelicaLiliana/MercadoLibre/actions/workflows/android.yml/badge.svg)](https://github.com/angelicaLiliana/MercadoLibre/actions/workflows/android.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Este proyecto es una prueba técnica para MercadoLibre. Se desarrolló una aplicación Android en la que el usuario puede realizar búsquedas de productos por categoría y visualizar sus detalles.
@@ -14,7 +14,6 @@ Este proyecto es una prueba técnica para MercadoLibre. Se desarrolló una aplic
 
 ---
 
-## 🛠️ Tecnologías
 
 - [Kotlin](https://kotlinlang.org/)
 - [Jetpack Compose](https://developer.android.com/jetpack/compose) – UI moderna y declarativa.
@@ -47,21 +46,18 @@ _Reporte Pruebas Unitarias 📂(app/build/reports/tests/testDebugUnitTest/) al a
 
 1. Clona el repositorio
    ```bash
+   git clone https://github.com/ANGELICALILIANA/MercadoLibre.git
 
 ## 📂 Estructura del proyecto
 
+```text
 📦 app
+┃
 ┣ 📂 data
-
 ┣ 📂 di
-
 ┣ 📂 domain
-
 ┣ 📂 navigation
-
 ┣ 📂 presentation
-
 ┣ 📂 ui
-
-┗ AndroidManifest.xml
+┗ 📄 AndroidManifest.xml
 
