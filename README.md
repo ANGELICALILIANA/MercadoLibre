@@ -44,11 +44,9 @@ _Reporte Pruebas Unitarias 📂(app/build/reports/tests/testDebugUnitTest/) al a
 
 ---
 
-## 🚀 Ejecución
 
 1. Clona el repositorio
    ```bash
-   git clone https://github.com/ANGELICALILIANA/MercadoLibre.git
 
 ## 📂 Estructura del proyecto
 
