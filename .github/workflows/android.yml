@@ -44,6 +44,3 @@ jobs:
         with:
           name: unit-test-report
           path: app/build/reports/tests/testDebugUnitTest/
-
-      - name: Verificar cobertura JaCoCo
-        run: ./gradlew jacocoTestReport
