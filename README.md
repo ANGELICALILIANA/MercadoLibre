@@ -58,3 +58,9 @@ _Reporte Pruebas Unitarias 📂 [(app/build/reports/tests/testDebugUnitTest/inde
 ┣ 📂 ui
 ┗ 📄 AndroidManifest.xml
 
+## 📦 Descargar APK
+
+Haz clic en el botón para descargar la última versión de la app:
+
+[![Descargar APK](https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android)](https://github.com/ANGELICALILIANA/MercadoLibre/releases/latest/download/MercadoLibre.apk)
+
