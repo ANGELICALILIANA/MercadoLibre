@@ -69,7 +69,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.compose.coil)
-    implementation(libs.androidx.ui.test.junit4.android)
     implementation(libs.androidx.navigation.testing.android)
     testImplementation(libs.junit)
     testImplementation(libs.androidx.junit.test)

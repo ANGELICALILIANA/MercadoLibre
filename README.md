@@ -55,7 +55,6 @@ _Reporte Pruebas Unitarias 📂 [(app/build/reports/tests/testDebugUnitTest/inde
 ┣ 📂 di
 ┣ 📂 domain
 ┣ 📂 navigation
-┣ 📂 presentation
 ┣ 📂 ui
 ┗ 📄 AndroidManifest.xml
 
