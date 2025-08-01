@@ -2,7 +2,7 @@ package com.example.mercadolibre.data.usecaseImpl
 
 import com.example.mercadolibre.data.model.ResponseCategoryItem
 import com.example.mercadolibre.domain.repository.SearchCategoryItemRepository
-import com.example.mercadolibre.domain.repository.usecase.ServiceUseCase
+import com.example.mercadolibre.domain.usecase.ServiceUseCase
 import javax.inject.Inject
 
 class SearchCategoryItemUseCaseImpl @Inject constructor(

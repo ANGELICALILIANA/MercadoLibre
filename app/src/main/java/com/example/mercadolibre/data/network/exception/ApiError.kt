@@ -1,6 +1,6 @@
 package com.example.mercadolibre.data.network.exception
 
-import com.example.mercadolibre.data.model.AppConstants as error
+import com.example.mercadolibre.utils.AppConstants as error
 
 data class ApiError(val message: String?, val code: Int?, var errorStatus: ErrorStatus) {
 

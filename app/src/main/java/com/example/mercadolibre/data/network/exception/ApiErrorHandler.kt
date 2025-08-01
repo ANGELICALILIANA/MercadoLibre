@@ -1,6 +1,6 @@
 package com.example.mercadolibre.data.network.exception
 
-import com.example.mercadolibre.data.model.AppConstants.UNKNOWN_ERROR_MESSAGE
+import com.example.mercadolibre.utils.AppConstants.UNKNOWN_ERROR_MESSAGE
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException

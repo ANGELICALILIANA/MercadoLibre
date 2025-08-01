@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mercadolibre.ui.sampleProducts
+import com.example.mercadolibre.data.model.sampleProducts
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -13,19 +13,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductViewModel @Inject constructor() : ViewModel() {
-    // Lista completa de productos (quemada)
+
     private val allProducts = sampleProducts
 
-    // Estado para el texto de búsqueda
     var searchQuery by mutableStateOf("")
         private set
 
-    // Estado para los productos filtrados
     var filteredProducts by mutableStateOf(allProducts)
-        private set
-
-    // Estado para mostrar carga (para futuro uso con API)
-    var isLoading by mutableStateOf(false)
         private set
 
     init {
@@ -35,10 +29,6 @@ class ProductViewModel @Inject constructor() : ViewModel() {
                 filterProducts()
             }
         }
-    }
-
-    fun onSearchQueryChange(query: String) {
-        searchQuery = query
     }
 
     private fun filterProducts() {

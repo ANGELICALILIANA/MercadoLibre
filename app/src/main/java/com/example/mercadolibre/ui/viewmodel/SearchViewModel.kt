@@ -12,9 +12,10 @@ import com.example.mercadolibre.data.model.ResponseCategoryList
 import com.example.mercadolibre.data.network.exception.ApiError
 import com.example.mercadolibre.data.usecaseImpl.SearchCategoryItemUseCaseImpl
 import com.example.mercadolibre.data.usecaseImpl.SearchCategoryListUseCaseImpl
-import com.example.mercadolibre.domain.repository.usecase.ServiceUseCaseResponse
-import com.example.mercadolibre.ui.Product
-import com.example.mercadolibre.ui.toProduct
+import com.example.mercadolibre.domain.usecase.ServiceUseCaseResponse
+import com.example.mercadolibre.data.model.Product
+import com.example.mercadolibre.data.model.mapper.toProductItem
+import com.example.mercadolibre.data.model.mapper.toProductList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,7 +34,6 @@ class SearchViewModel @Inject constructor(
 )  : ViewModel() {
 
     private val _responseCategoryList = MutableStateFlow<List<Product>>(emptyList())
-    val responseCategoryList: StateFlow<List<Product>> = _responseCategoryList.asStateFlow()
 
     private val _responseCategoryItem = MutableStateFlow<Product?>(null)
     val responseCategoryItem: StateFlow<Product?> = _responseCategoryItem.asStateFlow()
@@ -72,7 +72,7 @@ class SearchViewModel @Inject constructor(
                 object : ServiceUseCaseResponse<List<ResponseCategoryList>> {
                     override fun onSuccess(result: List<ResponseCategoryList>) {
                         _showOrHideLoader.value = false
-                        _responseCategoryList.value = result.map { it.toProduct() }
+                        _responseCategoryList.value = result.map { it.toProductList() }
                         filterProducts()
                         Log.d("http ${this::class.java.simpleName}", "_responseCategoryList: ${_responseCategoryList.value}")
                     }
@@ -102,7 +102,7 @@ class SearchViewModel @Inject constructor(
                     override fun onSuccess(result: ResponseCategoryItem) {
                         Log.d("http ${this::class.java.simpleName}", "getSearchItemCategory result: $result")
                         _showOrHideLoader.value = false
-                        _responseCategoryItem.value = result.toProduct()
+                        _responseCategoryItem.value = result.toProductItem()
                         Log.d("http ${this::class.java.simpleName}", "getSearchItemCategory _responseCategoryItem: ${_responseCategoryItem.value}")
                     }
 
@@ -113,14 +113,6 @@ class SearchViewModel @Inject constructor(
                 }
             )
         }
-    }
-
-    /**
-     * Limpia los resultados actuales de búsqueda de categorías e ítems
-     */
-    fun clearResponseCategoryList() {
-        _responseCategoryList.value = emptyList()
-        _responseCategoryItem.value = null
     }
 
     private fun filterProducts() {

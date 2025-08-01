@@ -1,6 +1,6 @@
 package com.example.mercadolibre.data.network.exception
 
-import com.example.mercadolibre.data.model.AppConstants
+import com.example.mercadolibre.utils.AppConstants
 import junit.framework.TestCase.assertEquals
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody

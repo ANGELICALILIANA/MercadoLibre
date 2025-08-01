@@ -1,4 +1,4 @@
-package com.example.mercadolibre.data.model
+package com.example.mercadolibre.utils
 
 object AppConstants {
 

@@ -1,4 +1,4 @@
-package com.example.mercadolibre.domain.repository.usecase
+package com.example.mercadolibre.domain.usecase
 
 import com.example.mercadolibre.data.network.exception.ApiError
 

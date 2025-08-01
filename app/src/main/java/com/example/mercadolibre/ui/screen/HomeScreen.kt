@@ -38,8 +38,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mercadolibre.ui.theme.LightGrayML
-import com.example.mercadolibre.ui.Product
-import com.example.mercadolibre.ui.sampleProducts
+import com.example.mercadolibre.data.model.Product
+import com.example.mercadolibre.data.model.sampleProducts
 import com.example.mercadolibre.ui.viewmodel.SearchViewModel
 
 @Composable

@@ -1,6 +1,6 @@
 package com.example.mercadolibre.data.network.exception
 
-import com.example.mercadolibre.data.model.AppConstants
+import com.example.mercadolibre.utils.AppConstants
 import junit.framework.TestCase.assertEquals
 import kotlin.test.Test
 

@@ -33,13 +33,12 @@ Este proyecto es una prueba técnica para MercadoLibre. Se desarrolló una aplic
 
 | Clase                          | Métodos probados | Estado |
 |-------------------------------|------------------|--------|
-| `SearchViewModel`             | ✅               | ✅     |
 | `ServiceUseCase`              | ✅               | ✅     |
 | `SearchCategoryItemUseCase`   | ✅               | ✅     |
 
 _Visualiza los resultados completos en la pestaña [Actions](https://github.com/tu_usuario/tu_repo/actions) del repositorio._
 
-_Reporte Pruebas Unitarias 📂[Actions](app/build/reports/tests/testDebugUnitTest/index.html) al abrir el archivo .html en el navegador_
+_Reporte Pruebas Unitarias 📂 [(app/build/reports/tests/testDebugUnitTest/index.html)] al abrir el archivo .html en el navegador_
 
 ---
 

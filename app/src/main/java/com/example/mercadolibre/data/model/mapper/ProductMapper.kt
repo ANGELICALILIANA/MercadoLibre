@@ -1,20 +1,10 @@
-package com.example.mercadolibre.ui
+package com.example.mercadolibre.data.model.mapper
 
+import com.example.mercadolibre.data.model.Product
 import com.example.mercadolibre.data.model.ResponseCategoryItem
 import com.example.mercadolibre.data.model.ResponseCategoryList
 
-data class Product(
-    val id: String,
-    val title: String,
-    val price: Double,
-    val description: String,
-    val category: String,
-    val stock: Int,
-    val seller: String,
-    val imageUrl: String? = null
-)
-
-fun ResponseCategoryList.toProduct(): Product {
+fun ResponseCategoryList.toProductList(): Product {
     return Product(
         id = this.category_id ?: generateRandomId(),
         title = this.category_name ?: "Unknown Product",
@@ -30,9 +20,9 @@ private fun generateRandomId(): String {
     return "prod_${java.util.UUID.randomUUID().toString().substring(0, 8)}"
 }
 
-fun ResponseCategoryItem.toProduct(): Product {
+fun ResponseCategoryItem.toProductItem(): Product {
 
-    val matchingPathItem = this.path_from_root?.firstOrNull { it?.id == this.id }
+    val matchingPathItem = this.path_from_root.firstOrNull { it?.id == this.id }
     val finalTitle = when {
         this.name != null -> this.name
         matchingPathItem?.name != null -> matchingPathItem.name
@@ -53,11 +43,3 @@ fun ResponseCategoryItem.toProduct(): Product {
         imageUrl = this.picture
     )
 }
-
-val sampleProducts = listOf(
-    Product("1", "Smartphone X", 299.99, "Teléfono de última generación", "Electrónicos", 10, "TecnoShop"),
-    Product("2", "Laptop Pro", 899.99, "Laptop potente para trabajo", "Computación", 5, "CompuMundo"),
-    Product("3", "Auriculares Bluetooth", 49.99, "Sonido de alta calidad", "Audio", 20, "AudioStore"),
-    Product("4", "Smart TV 55\"", 599.99, "TV con resolución 4K", "Televisores", 8, "ElectroHome"),
-    Product("5", "Cámara DSLR", 399.99, "Cámara profesional 24MP", "Fotografía", 3, "PhotoGear")
-)

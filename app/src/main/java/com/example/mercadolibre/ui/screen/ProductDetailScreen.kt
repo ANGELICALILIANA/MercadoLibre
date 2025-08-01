@@ -34,8 +34,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.mercadolibre.R
 import com.example.mercadolibre.ui.theme.LightGrayML
-import com.example.mercadolibre.ui.Product
-import com.example.mercadolibre.ui.sampleProducts
+import com.example.mercadolibre.data.model.Product
+import com.example.mercadolibre.data.model.sampleProducts
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.ui.res.stringResource
 

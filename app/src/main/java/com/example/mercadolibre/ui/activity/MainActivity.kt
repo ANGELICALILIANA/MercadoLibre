@@ -1,4 +1,4 @@
-package com.example.mercadolibre
+package com.example.mercadolibre.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.mercadolibre.R
 import com.example.mercadolibre.navigation.NavigationWrapper
 import com.example.mercadolibre.ui.theme.LightGrayML
 import com.example.mercadolibre.ui.theme.MercadoLibreTheme
