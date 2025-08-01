@@ -25,6 +25,7 @@ Este proyecto es una prueba técnica para MercadoLibre. Se desarrolló una aplic
 
 ---
 
+
 ## ✅ Resultados de pruebas
 
 > Las pruebas se ejecutan automáticamente mediante **GitHub Actions** en cada push o pull request.
@@ -43,9 +44,12 @@ _Reporte Pruebas Unitarias 📂 [(app/build/reports/tests/testDebugUnitTest/inde
 ---
 
 
-   Clona el repositorio
+1. Clona el repositorio
    ```bash
    git clone https://github.com/ANGELICALILIANA/MercadoLibre.git
+   
+---
+
 
 ## 📂 Estructura
 
@@ -57,6 +61,8 @@ _Reporte Pruebas Unitarias 📂 [(app/build/reports/tests/testDebugUnitTest/inde
 ┣ 📂 navigation
 ┣ 📂 ui
 ┗ 📄 AndroidManifest.xml
+
+---
 
 ## 📦 Descargar APK
 
